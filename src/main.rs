@@ -2,6 +2,7 @@ use std::io;
 use webbrowser;
 use std::time::{Duration, Instant};
 
+
 fn main() {
     loop {
         let youtube_url_start = "https://www.youtube.com/watch?v=-MaCJZIBKGs";
@@ -27,6 +28,7 @@ fn main() {
                 continue; // Skip to the next iteration of the loop
             }
         };
+        
         //Second input
         println!("Choose a Break timer duration:");
         println!("1. 5 minute");
@@ -59,6 +61,7 @@ fn main() {
             println!("Time remaining: {} seconds", remaining.as_secs());
             std::thread::sleep(Duration::from_secs(1));
         }
+        clearscreen::clear().expect("failed to clear screen");
         webbrowser::open(&youtube_url_end).unwrap(); // Open the URL after the countdown
 
         //break timer
@@ -68,8 +71,10 @@ fn main() {
             // Print remaining time every second
             let remaining = target_time - Instant::now();
             println!("Time remaining: {} seconds", remaining.as_secs());
+            
             std::thread::sleep(Duration::from_secs(1));
         }
+        clearscreen::clear().expect("failed to clear screen");
     }
       
 }
